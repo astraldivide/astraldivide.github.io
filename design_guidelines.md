@@ -32,16 +32,17 @@
 ### B. Typography
 
 **Font Stack:**
-- Display/Headers: 'Space Grotesk' (Google Fonts) - Modern, technical feel
-- Body: 'Inter' (Google Fonts) - Exceptional readability
+- Display/Headers: 'Space Grotesk' (Google Fonts) - Serif for artsy, editorial feel
+- Body: 'Inter' (Google Fonts) - Clean readability for content
 - Code/Math: 'JetBrains Mono' - For equations and technical content
 
 **Hierarchy:**
-- Hero Headline: text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight
-- Section Headers: text-4xl md:text-5xl font-bold tracking-tight
-- Question Headers: text-2xl md:text-3xl font-semibold
-- Body Text: text-base md:text-lg leading-relaxed max-w-prose
-- Captions: text-sm text-secondary
+- Hero Headline: text-6xl md:text-7xl lg:text-8xl font-serif font-bold tracking-tight
+- Section Headers: text-4xl md:text-6xl font-serif font-bold tracking-tight
+- Question Headers: text-2xl md:text-3xl font-serif font-semibold
+- Body Text: text-base md:text-lg leading-relaxed
+- Captions: text-sm text-muted-foreground
+- Pull Quotes: text-3xl md:text-5xl font-serif italic leading-tight
 
 ### C. Layout System
 
@@ -51,10 +52,12 @@
 - Component Padding: p-8 or p-12
 - Micro Spacing: gap-4, space-y-4
 
-**Container Strategy:**
-- Full-width sections with max-w-7xl mx-auto for content
-- Reading content: max-w-4xl mx-auto
-- Interactive panels: max-w-6xl mx-auto
+**Container Strategy - Broken Grid/Artsy:**
+- Asymmetric layouts with offset elements
+- Mix of full-bleed and constrained widths
+- Overlapping elements with z-index layering
+- Reading content: max-w-4xl with occasional breakouts
+- Use transform and translate for visual interest
 - Sticky elements: Use position sticky for progress indicators
 
 ### D. Component Library

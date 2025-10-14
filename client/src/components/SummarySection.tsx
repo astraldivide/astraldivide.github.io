@@ -57,11 +57,11 @@ export function SummarySection() {
         <div className="text-center mb-16">
           <div className={`inline-flex items-center gap-3 mb-6 ${isVisible ? 'animate-fade-up' : 'opacity-0'}`}>
             <Lightbulb className="w-8 h-8 text-primary" />
-            <h2 className="text-4xl md:text-5xl font-bold font-serif">
-              Mathematics: Shaping Tomorrow
+            <h2 className="text-4xl md:text-6xl font-bold font-serif">
+              So, how does maths impact us?
             </h2>
           </div>
-          <p className={`text-xl text-muted-foreground max-w-3xl mx-auto ${isVisible ? 'animate-fade-up [animation-delay:200ms] opacity-0 [animation-fill-mode:forwards]' : 'opacity-0'}`}>
+          <p className={`text-xl font-serif text-muted-foreground max-w-3xl mx-auto ${isVisible ? 'animate-fade-up [animation-delay:200ms] opacity-0 [animation-fill-mode:forwards]' : 'opacity-0'}`}>
             From guiding us across the globe to protecting our digital lives, mathematics is the invisible force behind modern innovation.
           </p>
         </div>
@@ -90,7 +90,7 @@ export function SummarySection() {
         </div>
 
         <Card className={`p-8 bg-card ${isVisible ? 'animate-scale-in [animation-delay:800ms] opacity-0 [animation-fill-mode:forwards]' : 'opacity-0'}`}>
-          <h3 className="text-2xl font-semibold mb-4">Final Reflection</h3>
+          <h3 className="text-2xl font-serif font-semibold mb-4">Final Reflection</h3>
           <p className="text-muted-foreground leading-relaxed mb-6">
             Mathematics isn't just about numbers and equations—it's a powerful tool for understanding and transforming our world. Every time you use your phone's GPS, receive a medical diagnosis, check the weather forecast, or send a secure message, you're benefiting from mathematical innovations.
           </p>

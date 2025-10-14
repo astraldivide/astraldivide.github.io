@@ -23,11 +23,11 @@ export function Hero() {
       </div>
 
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-8 animate-fade-up text-foreground">
+        <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-serif font-bold tracking-tight mb-8 animate-fade-up text-foreground leading-[0.95]">
           How is maths used to solve real-world problems?
         </h1>
-        <p className="text-xl sm:text-2xl md:text-3xl text-muted-foreground max-w-4xl mx-auto mb-12 animate-fade-up [animation-delay:200ms] opacity-0 [animation-fill-mode:forwards]">
-          Discover where mathematics has created something new or solved an important issue
+        <p className="text-xl sm:text-2xl md:text-3xl font-serif text-muted-foreground max-w-4xl mx-auto mb-12 animate-fade-up [animation-delay:200ms] opacity-0 [animation-fill-mode:forwards] leading-relaxed">
+          Zainab Chad, Nabeeha Mahreen, and Wasimah Begum
         </p>
         
         <button
@@ -36,7 +36,7 @@ export function Hero() {
           className="animate-fade-up [animation-delay:400ms] opacity-0 [animation-fill-mode:forwards] inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
           aria-label="Scroll to content"
         >
-          <span className="text-sm uppercase tracking-wider">Begin Journey</span>
+          <span className="text-sm uppercase tracking-wider font-sans">Our examples</span>
           <ChevronDown className="w-5 h-5 animate-bounce" />
         </button>
       </div>
