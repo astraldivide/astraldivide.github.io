@@ -1,18 +1,22 @@
 import { ScrollSection } from '../ScrollSection'
-import gpsImage from '@assets/stock_images/gps_satellite_naviga_0b8b407f.jpg'
+import navImage from '@assets/stock_images/vintage_navigation_t_52e6ae18.jpg'
 
 export default function ScrollSectionExample() {
   return (
     <ScrollSection
-      id="gps"
+      id="navigation"
+      number="01"
       title="GPS Navigation"
-      subtitle="Case Study 1"
-      problem="Before GPS, navigation relied on maps and landmarks. Finding precise locations was time-consuming and error-prone."
-      solution="Einstein's theory of relativity combined with precise atomic clocks and triangulation algorithms enable satellites to calculate your exact position on Earth."
-      impact="GPS revolutionized navigation, enabling billions of smartphones, emergency services, and autonomous vehicles to know exactly where they are within meters."
-      image={gpsImage}
-      imageAlt="GPS satellite visualization"
-      equation="Δt = (v²/2c²) × t"
+      era="1970s-1990s"
+      problem="For centuries, sailors navigated by the stars, explorers by compass, and travelers by paper maps. Finding your exact position on Earth required specialized training, expensive equipment, and often, educated guesswork. Lives were lost to navigation errors."
+      solution="Einstein's theories of relativity revealed that time passes differently for satellites orbiting Earth at high speeds and altitudes. Engineers used this insight to build GPS—satellites broadcast precise time signals, and receivers calculate position by measuring signal delays, accounting for relativistic time dilation."
+      impact="Today, GPS guides billions of smartphones, emergency services, autonomous vehicles, and global supply chains. What once required years of training now happens automatically in your pocket, saving countless lives and transforming how humanity moves."
+      image={navImage}
+      imageAlt="Vintage navigation instruments"
+      equation="Δt = (v²/2c²)t + (GM/rc²)t"
+      inventor="Gladys West"
+      inventorYears="(1930-present)"
+      layout="left"
     />
   )
 }

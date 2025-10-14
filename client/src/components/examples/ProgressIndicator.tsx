@@ -2,7 +2,7 @@ import { ProgressIndicator } from '../ProgressIndicator'
 import { ThemeProvider } from '../ThemeProvider'
 
 export default function ProgressIndicatorExample() {
-  const sections = ['GPS', 'Medical', 'Climate', 'Crypto', 'Summary'];
+  const sections = ['Origins', 'Navigation', 'Medicine', 'Climate', 'Security'];
   
   return (
     <ThemeProvider>

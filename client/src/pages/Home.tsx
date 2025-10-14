@@ -2,104 +2,110 @@ import { useEffect, useState } from "react";
 import { Hero } from "@/components/Hero";
 import { ProgressIndicator } from "@/components/ProgressIndicator";
 import { ScrollSection } from "@/components/ScrollSection";
-import { InteractiveQuestion } from "@/components/InteractiveQuestion";
+import { TriviaQuestion } from "@/components/TriviaQuestion";
+import { Timeline } from "@/components/Timeline";
 import { SummarySection } from "@/components/SummarySection";
 
-import gpsImage from "@assets/stock_images/gps_satellite_naviga_0b8b407f.jpg";
-import medicalImage from "@assets/stock_images/medical_imaging_mri__9cd12267.jpg";
-import climateImage from "@assets/stock_images/climate_modeling_ear_6d5596fe.jpg";
-import cryptoImage from "@assets/stock_images/cryptography_encrypt_319d77d9.jpg";
+import navImage from "@assets/stock_images/vintage_navigation_t_52e6ae18.jpg";
+import medicalImage from "@assets/stock_images/medical_history_vint_33577e01.jpg";
+import climateImage from "@assets/stock_images/vintage_weather_inst_a0307d25.jpg";
+import cryptoImage from "@assets/stock_images/antique_encryption_c_8d20920e.jpg";
 
 const sections = [
-  { id: "gps", title: "GPS Navigation" },
-  { id: "medical", title: "Medical Imaging" },
-  { id: "climate", title: "Climate Modeling" },
-  { id: "crypto", title: "Cryptography" },
-  { id: "summary", title: "Summary" },
+  { id: "timeline", title: "Origins" },
+  { id: "navigation", title: "Navigation" },
+  { id: "medical", title: "Medicine" },
+  { id: "climate", title: "Climate" },
+  { id: "security", title: "Security" },
+  { id: "summary", title: "Impact" },
 ];
 
-const gpsQuestion = {
-  question: "How does GPS use mathematics to find your location?",
+const navTrivia = {
+  question: "Who developed the mathematical models that became the foundation of GPS?",
   options: [
     {
-      text: "GPS uses simple addition and subtraction",
+      text: "Albert Einstein",
       correct: false,
-      explanation: "GPS actually relies on advanced mathematics including Einstein's theory of relativity and complex algorithms.",
+      explanation: "While Einstein's theory of relativity is crucial for GPS accuracy, he didn't develop the system itself. His theories provided the physics foundation."
     },
     {
-      text: "GPS combines relativity theory with triangulation algorithms",
+      text: "Gladys West",
       correct: true,
-      explanation: "Correct! GPS satellites must account for time dilation from both special and general relativity, while using triangulation to pinpoint your location.",
+      explanation: "Correct! Gladys West, an African-American mathematician, developed the mathematical models that became the foundation of GPS technology while working at the U.S. Naval Surface Warfare Center in the 1970s-80s."
     },
     {
-      text: "GPS only needs one satellite to work",
+      text: "Steve Jobs",
       correct: false,
-      explanation: "GPS requires at least four satellites to determine your 3D position and time accurately.",
-    },
+      explanation: "Steve Jobs brought GPS to consumer smartphones with the iPhone, but he didn't invent the underlying satellite navigation technology."
+    }
   ],
+  funFact: "Gladys West worked on GPS for decades, but her crucial contributions weren't widely recognized until 2018 when she was inducted into the Air Force Space and Missile Pioneers Hall of Fame!"
 };
 
-const medicalQuestion = {
-  question: "What mathematical tool is essential for MRI and CT scans?",
+const medicalTrivia = {
+  question: "Which 19th-century mathematician's work became essential for modern medical imaging?",
   options: [
     {
-      text: "Basic algebra",
+      text: "Isaac Newton",
       correct: false,
-      explanation: "While algebra is important, medical imaging requires more sophisticated mathematics.",
+      explanation: "Newton's calculus is fundamental to physics, but medical imaging relies on different mathematical tools."
     },
     {
-      text: "Fourier transforms",
+      text: "Joseph Fourier",
       correct: true,
-      explanation: "Exactly! Fourier transforms convert complex signals into frequency data, allowing doctors to see inside the human body without surgery.",
+      explanation: "Exactly! Joseph Fourier developed Fourier analysis in the 1800s to study heat flow. Two centuries later, his mathematical transforms became the foundation of MRI and CT scans, saving millions of lives."
     },
     {
-      text: "Geometry only",
+      text: "Pythagoras",
       correct: false,
-      explanation: "Geometry plays a role, but Fourier analysis is the key mathematical technique that makes medical imaging possible.",
-    },
+      explanation: "While Pythagoras contributed to geometry, medical imaging relies on Fourier's more advanced mathematical techniques."
+    }
   ],
+  funFact: "Fourier died in 1830, a full 142 years before the first CT scan was performed. He never knew his heat equations would one day see inside the human body!"
 };
 
-const climateQuestion = {
-  question: "How do climate models predict future weather patterns?",
+const climateTrivia = {
+  question: "Who created the first mathematical climate model that could predict global warming?",
   options: [
     {
-      text: "They use historical data alone",
+      text: "Al Gore",
       correct: false,
-      explanation: "Climate models do use historical data, but they rely heavily on mathematical equations to simulate future conditions.",
+      explanation: "Al Gore raised awareness about climate change, but he didn't create the mathematical models."
     },
     {
-      text: "Through differential equations modeling atmospheric physics",
+      text: "Syukuro Manabe",
       correct: true,
-      explanation: "Correct! Climate scientists use complex systems of differential equations to model how heat, moisture, and air move through the atmosphere over time.",
+      explanation: "Right! Syukuro Manabe developed the first sophisticated climate model in 1967, using differential equations to predict how CO₂ would warm Earth. He won the Nobel Prize in Physics for this work in 2021."
     },
     {
-      text: "By making random guesses",
+      text: "Greta Thunberg",
       correct: false,
-      explanation: "Climate models are based on rigorous mathematical and physical principles, not guesswork.",
-    },
+      explanation: "Greta Thunberg is a climate activist who uses climate models to inform her advocacy, but didn't develop the mathematical models themselves."
+    }
   ],
+  funFact: "Manabe's 1967 model predicted 2°C warming from doubled CO₂—remarkably close to modern estimates, despite using a computer thousands of times weaker than your phone!"
 };
 
-const cryptoQuestion = {
-  question: "What makes modern encryption mathematically secure?",
+const cryptoTrivia = {
+  question: "The RSA encryption algorithm is named after its three inventors. Which mathematician is the 'R'?",
   options: [
     {
-      text: "It uses very large prime numbers that are hard to factor",
+      text: "René Descartes",
+      correct: false,
+      explanation: "Descartes lived in the 1600s, long before computer encryption existed."
+    },
+    {
+      text: "Ron Rivest",
       correct: true,
-      explanation: "Precisely! Modern encryption like RSA relies on the mathematical difficulty of factoring the product of two very large prime numbers—a problem that would take even supercomputers millions of years to solve.",
+      explanation: "Correct! Ron Rivest, along with Adi Shamir and Leonard Adleman, invented RSA encryption in 1977. The algorithm uses prime number mathematics to protect virtually all online security today."
     },
     {
-      text: "It randomly scrambles data",
+      text: "Ramanujan",
       correct: false,
-      explanation: "Encryption appears random but is actually based on precise mathematical algorithms using prime numbers and modular arithmetic.",
-    },
-    {
-      text: "It uses simple passwords",
-      correct: false,
-      explanation: "Strong encryption relies on complex mathematical problems, not just passwords. The mathematics makes it computationally infeasible to break.",
-    },
+      explanation: "Srinivasa Ramanujan was a brilliant mathematician, but he died in 1920, long before computer encryption was needed."
+    }
   ],
+  funFact: "The team spent an entire evening trying to break their own algorithm before they convinced themselves it was secure. That evening's work now protects trillions of dollars in transactions!"
 };
 
 export default function Home() {
@@ -146,63 +152,79 @@ export default function Home() {
       
       <Hero />
 
+      <Timeline />
+
       <ScrollSection
-        id="gps"
-        title="GPS Navigation"
-        subtitle="Case Study 1"
-        problem="Before GPS, navigation relied on paper maps and landmarks. Finding precise locations was time-consuming, error-prone, and often impossible in unfamiliar territory or during emergencies."
-        solution="GPS uses Einstein's theory of relativity combined with atomic clocks and triangulation algorithms. Satellites broadcast time signals, and receivers calculate distances by measuring signal delays. Because satellites move at high speeds and are far from Earth's gravity, both special and general relativity corrections are essential for accuracy."
-        impact="GPS revolutionized navigation, enabling billions of smartphones, emergency services, autonomous vehicles, and delivery systems to pinpoint locations within meters. It has saved countless lives and transformed global logistics."
-        image={gpsImage}
-        imageAlt="GPS satellite orbiting Earth"
-        equation="Δt = (v²/2c²) × t  (time dilation correction)"
+        id="navigation"
+        number="01"
+        title="Navigating the Globe"
+        era="1970s-1990s"
+        problem="For centuries, sailors navigated by the stars, explorers by compass, and travelers by paper maps. Finding your exact position on Earth required specialized training, expensive equipment, and often, educated guesswork. Navigation errors cost lives, delayed cargo, and limited human exploration. How could humanity achieve precise, global positioning available to everyone?"
+        solution="Einstein's theories of relativity revealed that time passes differently for satellites orbiting Earth at high speeds and altitudes. Engineers combined this insight with advanced mathematics to build GPS—satellites broadcast precise time signals, and receivers calculate position by measuring signal delays, accounting for relativistic time dilation down to the nanosecond."
+        impact="Today, GPS guides billions of smartphones, emergency services finding accident victims, autonomous vehicles, farmers optimizing crops, and global supply chains. What once required years of training and expensive instruments now happens automatically in your pocket, fundamentally transforming how humanity moves and connects."
+        image={navImage}
+        imageAlt="Vintage navigation instruments including sextant and compass"
+        equation="Δt = (v²/2c²)t + (GM/rc²)t"
+        inventor="Gladys West & Team"
+        inventorYears="(1956-present)"
+        layout="left"
       />
 
-      <InteractiveQuestion {...gpsQuestion} />
+      <TriviaQuestion {...navTrivia} />
 
       <ScrollSection
         id="medical"
-        title="Medical Imaging"
-        subtitle="Case Study 2"
-        problem="Diagnosing internal injuries and diseases once required invasive surgery or risky exploratory procedures. Doctors needed a way to see inside the human body without cutting it open."
-        solution="Fourier transforms, a mathematical technique developed in the 1800s, became the foundation of modern medical imaging. MRI and CT scanners capture complex signals from inside the body, then use Fourier analysis to convert these signals into detailed 2D and 3D images."
-        impact="Medical imaging has saved millions of lives by enabling early cancer detection, diagnosing brain injuries, and guiding surgeries. What once required dangerous procedures now happens safely in minutes."
+        number="02"
+        title="Seeing the Invisible"
+        era="1800s-1970s"
+        problem="For most of human history, diagnosing internal injuries and diseases required invasive surgery or dangerous exploratory procedures. Doctors desperately needed a way to see inside the living human body without cutting it open. X-rays offered glimpses, but revealed only bones and dense tissues, missing crucial soft tissue details that could mean the difference between life and death."
+        solution="In the 1800s, Joseph Fourier developed mathematical transforms to analyze heat flow. Nearly two centuries later, engineers discovered his equations could convert complex radio signals and magnetic resonance into detailed images. MRI and CT scanners capture waves passing through the body, then use Fourier analysis to mathematically reconstruct every layer of tissue into viewable slices."
+        impact="Medical imaging has revolutionized healthcare, enabling early cancer detection, diagnosing brain injuries, guiding surgical procedures, and monitoring treatment effectiveness. What once required risky surgery now happens safely in minutes, saving millions of lives annually and transforming medicine from educated guesswork to precise science."
         image={medicalImage}
-        imageAlt="Medical MRI brain scan"
-        equation="F(ω) = ∫ f(t)e^(-iωt) dt  (Fourier transform)"
-        reverse
+        imageAlt="Vintage medical imaging and anatomical illustrations"
+        equation="F(ω) = ∫ f(t)e^(-iωt) dt"
+        inventor="Joseph Fourier"
+        inventorYears="(1768-1830)"
+        layout="right"
       />
 
-      <InteractiveQuestion {...medicalQuestion} />
+      <TriviaQuestion {...medicalTrivia} />
 
       <ScrollSection
         id="climate"
-        title="Climate Modeling"
-        subtitle="Case Study 3"
-        problem="Understanding and predicting climate change requires analyzing countless variables: temperature, humidity, wind patterns, ocean currents, and greenhouse gases. The complexity is overwhelming without mathematical tools."
-        solution="Climate scientists use systems of differential equations to model how energy and matter flow through Earth's atmosphere and oceans. These equations, solved by supercomputers running millions of calculations, simulate decades or centuries of climate evolution in hours."
-        impact="Climate models have revealed the reality of human-caused warming, predicted rising sea levels, and guided international climate policy. They help us understand our planet's future and make informed decisions about our environment."
+        number="03"
+        title="Predicting Our Future"
+        era="1960s-Present"
+        problem="Earth's climate involves countless interconnected variables—temperature, humidity, wind patterns, ocean currents, ice coverage, and greenhouse gases. Understanding how these systems interact and predicting future changes seemed impossibly complex. Scientists needed to model the entire planet's atmosphere, but how do you simulate something so vast and chaotic?"
+        solution="Climate scientists developed systems of differential equations—mathematical tools that describe how things change over time. These equations model how heat, moisture, and air move through the atmosphere, how oceans absorb carbon, and how ice reflects sunlight. Supercomputers solve millions of these equations simultaneously, simulating decades of climate evolution in hours to reveal what's coming."
+        impact="Climate models have revealed the reality and urgency of human-caused warming, predicted rising sea levels with remarkable accuracy, and guided international climate policy. They've transformed climate science from observation to prediction, helping humanity understand our impact on Earth and make informed decisions about our future."
         image={climateImage}
-        imageAlt="Earth climate visualization"
-        equation="∂T/∂t = -v·∇T + κ∇²T  (heat diffusion equation)"
+        imageAlt="Vintage weather and meteorological instruments"
+        equation="∂T/∂t = -v·∇T + κ∇²T + Q"
+        inventor="Syukuro Manabe & Team"
+        inventorYears="(1931-present)"
+        layout="left"
       />
 
-      <InteractiveQuestion {...climateQuestion} />
+      <TriviaQuestion {...climateTrivia} />
 
       <ScrollSection
-        id="crypto"
-        title="Cryptography"
-        subtitle="Case Study 4"
-        problem="In the digital age, we send sensitive information—passwords, bank details, medical records—across networks that could be intercepted by anyone. How do we keep this data secure?"
-        solution="Modern encryption relies on number theory, particularly the difficulty of factoring large numbers into primes. RSA encryption uses two large prime numbers (hundreds of digits long) whose product is easy to compute but nearly impossible to reverse—creating a mathematical 'one-way door' that protects our data."
-        impact="Every secure website (HTTPS), online payment, encrypted message, and digital signature relies on mathematical cryptography. It protects trillions of dollars in transactions and safeguards privacy for billions of people daily."
+        id="security"
+        number="04"
+        title="Securing Our Digital Lives"
+        era="1970s-Present"
+        problem="In the digital age, we constantly send sensitive information—passwords, bank details, medical records, state secrets—across networks that anyone could intercept. Traditional locks and keys don't work in cyberspace where information is just numbers. How could we create mathematical locks that are easy to close but virtually impossible to pick?"
+        solution="RSA encryption exploits a beautiful asymmetry in number theory: multiplying two large prime numbers is trivial, but factoring their product back into those primes is astronomically difficult. The encryption uses public keys (the product) to lock messages, while only the private keys (the original primes) can unlock them. Breaking this code would require factoring numbers so large it would take all computers on Earth millions of years."
+        impact="Every secure website (HTTPS), online payment, encrypted message, digital signature, and blockchain transaction relies on mathematical cryptography. It protects trillions of dollars in transactions daily, safeguards privacy for billions of people, and enables the digital economy. Without these mathematical discoveries, modern internet commerce and communication would be impossible."
         image={cryptoImage}
-        imageAlt="Digital encryption and security"
-        equation="c = m^e mod n  (RSA encryption)"
-        reverse
+        imageAlt="Antique encryption and cipher machines"
+        equation="c = m^e mod n"
+        inventor="Rivest, Shamir & Adleman"
+        inventorYears="(1977)"
+        layout="right"
       />
 
-      <InteractiveQuestion {...cryptoQuestion} />
+      <TriviaQuestion {...cryptoTrivia} />
 
       <SummarySection />
     </div>

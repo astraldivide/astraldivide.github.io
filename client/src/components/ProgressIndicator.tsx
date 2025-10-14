@@ -25,7 +25,7 @@ export function ProgressIndicator({ sections, activeSection, onSectionClick }: P
   }, []);
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
+    <div className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-sm border-b border-border">
       <div className="h-1 bg-muted">
         <div 
           className="h-full bg-primary transition-all duration-300"
@@ -33,23 +33,25 @@ export function ProgressIndicator({ sections, activeSection, onSectionClick }: P
         />
       </div>
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-4">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-6">
-            <span className="font-serif text-lg font-bold">Math Matters</span>
-            <div className="hidden md:flex items-center gap-3">
+          <div className="flex items-center gap-8">
+            <span className="font-serif text-xl font-bold">Mathematical Stories</span>
+            <div className="hidden md:flex items-center gap-4">
               {sections.map((section, index) => (
                 <button
                   key={index}
                   onClick={() => onSectionClick(index)}
                   data-testid={`button-section-${index}`}
-                  className={`w-2 h-2 rounded-full transition-all ${
+                  className={`text-xs uppercase tracking-wider font-sans transition-colors ${
                     index === activeSection 
-                      ? 'bg-primary w-8' 
-                      : 'bg-muted-foreground/30 hover-elevate'
+                      ? 'text-primary font-medium' 
+                      : 'text-muted-foreground hover:text-foreground'
                   }`}
                   aria-label={`Go to ${section}`}
-                />
+                >
+                  {section}
+                </button>
               ))}
             </div>
           </div>

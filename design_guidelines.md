@@ -2,142 +2,158 @@
 
 ## Design Approach
 
-**Selected Approach:** Reference-Based with Interactive Storytelling Focus
-- Primary inspiration: NYT Interactive Articles, Stripe's visual sophistication, Linear's clean interface
-- Goal: Create an engaging educational experience that balances sophisticated design with clear information hierarchy
-- Principle: Every scroll should reveal new insights with purposeful animations and interactions
+**Selected Approach:** Reference-Based Editorial with Artisanal Flat Design
+- Primary inspiration: Medium's editorial layouts, Kinfolk magazine aesthetics, The Pudding's data storytelling
+- Goal: Create a warm, inviting educational narrative that feels like a beautifully crafted magazine article
+- Principle: Organic, asymmetric layouts that guide the eye naturally through mathematical stories
 
 ## Core Design Elements
 
 ### A. Color Palette
 
-**Dark Mode (Primary):**
-- Background: 222 15% 8% (deep charcoal)
-- Surface: 222 15% 12% (elevated panels)
-- Primary: 210 100% 60% (vibrant blue - represents logic and clarity)
-- Accent: 280 65% 65% (purple - for mathematical discoveries)
-- Text Primary: 0 0% 98%
-- Text Secondary: 0 0% 70%
-- Success (correct answers): 142 76% 50%
-- Error (incorrect): 0 84% 60%
+**Dark Mode:**
+- Background: 28 25% 12% (warm charcoal)
+- Surface: 28 20% 16% (elevated warm gray)
+- Primary: 25 85% 58% (terracotta/burnt orange)
+- Accent: 45 85% 62% (warm gold)
+- Text Primary: 30 15% 92%
+- Text Secondary: 30 10% 68%
+- Success: 145 60% 55% (sage green)
+- Error: 355 75% 60% (warm red)
 
 **Light Mode:**
-- Background: 0 0% 98%
+- Background: 40 30% 96% (warm cream)
 - Surface: 0 0% 100%
-- Primary: 210 100% 45%
-- Accent: 280 65% 50%
-- Text Primary: 222 15% 12%
-- Text Secondary: 222 10% 40%
+- Primary: 25 85% 48%
+- Accent: 45 75% 52%
+- Text Primary: 28 25% 18%
+- Text Secondary: 28 15% 45%
 
 ### B. Typography
 
 **Font Stack:**
-- Display/Headers: 'Space Grotesk' (Google Fonts) - Modern, technical feel
-- Body: 'Inter' (Google Fonts) - Exceptional readability
-- Code/Math: 'JetBrains Mono' - For equations and technical content
+- Display/Headers: 'Fraunces' (Google Fonts) - Elegant serif with character
+- Body: 'Crimson Pro' (Google Fonts) - Readable serif for long-form
+- Accents/Labels: 'DM Sans' (Google Fonts) - Clean sans for UI elements
+- Math Equations: 'JetBrains Mono' - Technical clarity
 
 **Hierarchy:**
-- Hero Headline: text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight
-- Section Headers: text-4xl md:text-5xl font-bold tracking-tight
-- Question Headers: text-2xl md:text-3xl font-semibold
-- Body Text: text-base md:text-lg leading-relaxed max-w-prose
-- Captions: text-sm text-secondary
+- Hero Headline: text-5xl md:text-7xl font-bold leading-tight font-display
+- Section Headers: text-3xl md:text-5xl font-bold leading-tight font-display
+- Subheaders: text-xl md:text-2xl font-medium font-body
+- Body Text: text-lg md:text-xl leading-relaxed font-body
+- UI Labels: text-sm uppercase tracking-wide font-sans
 
 ### C. Layout System
 
-**Spacing Primitives:** Use Tailwind units of 4, 8, 12, 16, 20, 24, 32
-- Section Padding: py-20 md:py-32
-- Content Spacing: space-y-12 or gap-12
-- Component Padding: p-8 or p-12
-- Micro Spacing: gap-4, space-y-4
+**Broken Grid Philosophy:**
+- Spacing Primitives: Tailwind units of 6, 10, 16, 24, 32, 40
+- Asymmetric columns: 40/60 splits, offset grids, overlapping elements
+- Organic whitespace: Varying section padding (py-24 to py-40)
+- Staggered content: Images break grid boundaries, text wraps irregularly
+- Z-axis layering: Content cards overlap sections with negative margins
 
 **Container Strategy:**
-- Full-width sections with max-w-7xl mx-auto for content
-- Reading content: max-w-4xl mx-auto
-- Interactive panels: max-w-6xl mx-auto
-- Sticky elements: Use position sticky for progress indicators
+- Base container: max-w-7xl with irregular internal grids
+- Narrow reading: max-w-2xl offset from center
+- Wide visuals: Break container bounds with -mx-4 or absolute positioning
+- Asymmetric splits: grid-cols-5 with col-span-2 + col-span-3 patterns
 
 ### D. Component Library
 
 **Hero Section:**
-- Full viewport (min-h-screen) with centered content
-- Large, impactful headline with the assignment question
-- Animated scroll indicator
-- Subtle particle/grid background effect suggesting mathematical precision
+- Large atmospheric image: Abstract mathematical art (golden ratio spirals, Fibonacci patterns, historical manuscripts)
+- Asymmetric text placement: Offset to left or right third
+- Changing headline text: Rotates through mathematical quotes/concepts on scroll
+- Overlay: Warm gradient (from-primary/20 via-background/60 to-background)
+- Scroll indicator: Artistic line drawing or handwritten arrow
 
-**Scrollytelling Sections (5-6 Case Studies):**
-- Sticky visualization on one side, scrolling content on other (desktop)
-- Stack vertically on mobile
-- Each section: Case study title, problem statement, mathematical solution, real-world impact
-- Scroll-triggered reveal animations (fade-up, scale)
+**Interactive Timeline:**
+- Horizontal scroll on desktop, vertical on mobile
+- Period markers: 1600s, 1700s, 1800s, 1900s, 2000s
+- Inventor cards: Portrait medallions with names, dates, discoveries
+- Connecting thread: Hand-drawn style line linking events
+- Trivia triggers: Click cards to reveal questions about inventors
 
-**Interactive Question Cards:**
-- Elevated surface (bg-surface) with rounded-2xl border
-- Multiple choice or interactive input formats
-- Immediate feedback with color-coded responses
-- Explanation reveals on answer
-- Progress indicators showing questions completed
+**Story-Based Case Studies (5-6 sections):**
+- Irregular layout per section: Alternate between image-left, image-right, full-bleed
+- Narrative structure: Historical context → Problem → Solution → Impact
+- Visual elements: Mix of period illustrations, modern diagrams, artistic overlays
+- Pull quotes: Large serif quotes from inventors in offset boxes
+- Interactive reveals: Scroll to unveil mathematical proofs step-by-step
+
+**Trivia Question Cards:**
+- Organic shapes: Rounded-3xl with subtle shadow, not rigid rectangles
+- Warm surface: bg-surface with border-primary/20 border
+- Answer options: Radio buttons styled as handwritten checkboxes
+- Feedback: Color-coded text reveals with inventor portraits
+- Score tracker: Decorative progress bar with vintage aesthetic
 
 **Visual Demonstrations:**
-- Animated graphs with smooth transitions
-- Equation reveals with step-by-step breakdowns
-- Data visualization cards with hover interactions
-- Side-by-side before/after comparisons
+- Hand-drawn style graphs: SVG paths with organic, imperfect lines
+- Equation overlays: Floating mathematical notation with paper texture
+- Data cards: Stacked, slightly rotated cards showing comparisons
+- Animated diagrams: Gentle fade-ins, no sharp geometric transitions
 
-**Progress Navigation:**
-- Fixed top or side indicator showing scroll progress
-- Section dots/numbers for quick navigation
-- Smooth scroll behavior between sections
-
-**Summary/Reflection Section:**
-- Synthesize all learnings
-- Final reflection question
-- Call-to-action for further exploration
+**Magazine-Style Elements:**
+- Drop caps: First letter of major sections enlarged and decorated
+- Sidenotes: Margin notes with smaller text, connected by ornamental brackets
+- Pull statistics: Large numbers in accent color breaking into margins
+- Section dividers: Artistic flourishes or mathematical symbols as ornaments
 
 ### E. Animations & Interactions
 
-**Scroll-Triggered Animations:**
-- Fade-up with slide (y-offset 20-40px)
-- Scale from 0.95 to 1.0
-- Stagger children animations (delay increments of 100-150ms)
-- Use intersection observer for trigger points
+**Scroll-Triggered Effects:**
+- Fade-up with gentle parallax (images move 15% slower than content)
+- Staggered reveals: Text blocks appear sequentially with 200ms delays
+- Timeline progression: Cards slide in from sides as timeline enters view
+- Equation building: Mathematical symbols assemble piece by piece
+- Vintage transitions: Subtle sepia flash or paper texture overlay
 
-**Interactive Elements:**
-- Hover: subtle scale (1.02) and shadow elevation
-- Question feedback: Color transition + checkmark/x icon animation
-- Graph animations: Draw paths, fade in data points sequentially
-- Parallax: Subtle background movement (10-20% scroll speed difference)
-
-**Performance:** Use transform and opacity only for animations, will-change sparingly
+**Interactive Moments:**
+- Hover: Lift with warm shadow (shadow-xl shadow-primary/10)
+- Trivia feedback: Gentle bounce animation + color wash
+- Timeline scrubbing: Smooth horizontal scroll with momentum
+- Image reveals: Curtain effect or iris expand from center
+- Hero text rotation: Cross-fade between mathematical concepts every 4 seconds
 
 ### F. Images
 
-**Hero Section:**
-- Large background image: Abstract mathematical visualization (fractals, geometric patterns, or data visualization art)
-- Overlay with gradient: from-background/80 to-background/40
-- Image should be sophisticated, not literal - think artistic representation of mathematics
+**Large Hero Image:**
+- Full-width atmospheric background: Historical mathematical manuscript texture, golden ratio visualization, or Fibonacci spiral in nature
+- Overlay: Warm gradient maintaining readability
+- Style: Aged, artisanal, evokes sense of discovery
 
-**Case Study Sections:**
-- GPS/Navigation: Satellite visualization or map interface
-- Medical Imaging: MRI/CT scan artistic representation
-- Climate Modeling: Weather patterns or Earth visualization
-- Cryptography: Abstract lock/encryption visualization
-- Each image should be high-quality, 16:9 or square aspect ratio
+**Case Study Images:**
+- Mix of historical and modern: Inventor portraits, vintage diagrams, contemporary photography
+- Treatment: Subtle sepia tones or warm color grading for cohesion
+- Aspect ratios: Varied (portrait for people, landscape for diagrams, square for concepts)
+- Placement: Break grid intentionally - overlap text, extend into margins, cluster asymmetrically
 
-**Placement:** Images positioned as sticky elements in desktop scrollytelling sections, inline on mobile
+**Timeline Portraits:**
+- Circular medallion images of mathematicians
+- Vintage engraving style or colorized historical photos
+- Consistent size but varied positioning along timeline
+
+**Supporting Visuals:**
+- Period-appropriate illustrations for historical sections
+- Modern data visualizations with vintage aesthetic (muted colors, serif labels)
+- Textural elements: Paper grain, ink effects, margin doodles
 
 ## Accessibility & Dark Mode
 
-- Maintain WCAG AA contrast ratios (4.5:1 for text)
-- Focus indicators: 2px ring-primary ring-offset-2 ring-offset-background
-- Interactive questions: keyboard navigable with Enter to select
-- Screen reader announcements for answer feedback
-- Consistent dark mode across all inputs, selects, and interactive elements
+- High contrast serif typography: Minimum 18px body for readability
+- Focus indicators: 3px ring-accent with subtle glow effect
+- Keyboard navigation: Tab through timeline, Enter for trivia selection
+- Warm dark mode: Reduced eye strain with brown-tinted backgrounds
+- Screen reader: Descriptive labels for all interactive mathematical elements
+- Color-independent feedback: Icons accompany color changes for answers
 
 ## Key Differentiators
 
-- **Educational Sophistication:** Professional design typically seen in tech products applied to educational content
-- **Progressive Disclosure:** Information revealed at optimal pace through scroll
-- **Active Learning:** Questions integrated into narrative flow, not separated
-- **Visual Clarity:** Complex mathematical concepts made accessible through clean design and thoughtful visualization
-- **Narrative Flow:** Each section builds on previous, creating cohesive learning journey
+- **Editorial Warmth:** Inviting magazine aesthetic vs sterile educational interface
+- **Human-Centered Math:** Stories of inventors create emotional connection to concepts
+- **Broken Grid Artistry:** Organic layouts feel crafted, not templated
+- **Layered Narrative:** Timeline + case studies + trivia create multi-dimensional exploration
+- **Artisanal Details:** Drop caps, sidenotes, ornamental dividers add tactile quality
+- **Warm Intelligence:** Sophisticated color palette makes mathematics approachable

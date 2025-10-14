@@ -1,29 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Lightbulb, TrendingUp, Globe, Lock, Activity } from "lucide-react";
-import { Card } from "@/components/ui/card";
-
-const innovations = [
-  {
-    icon: Globe,
-    title: "GPS Navigation",
-    description: "Relativity theory enables precise positioning",
-  },
-  {
-    icon: Activity,
-    title: "Medical Imaging",
-    description: "Fourier transforms create life-saving scans",
-  },
-  {
-    icon: TrendingUp,
-    title: "Climate Modeling",
-    description: "Differential equations predict our future",
-  },
-  {
-    icon: Lock,
-    title: "Cryptography",
-    description: "Prime numbers protect our digital world",
-  },
-];
+import { Quote } from "lucide-react";
 
 export function SummarySection() {
   const [isVisible, setIsVisible] = useState(false);
@@ -50,59 +26,60 @@ export function SummarySection() {
     <section
       id="summary"
       ref={sectionRef}
-      className="min-h-screen py-20 md:py-32 bg-muted/30"
+      className="min-h-screen py-24 lg:py-40"
       data-testid="section-summary"
     >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <div className={`inline-flex items-center gap-3 mb-6 ${isVisible ? 'animate-fade-up' : 'opacity-0'}`}>
-            <Lightbulb className="w-8 h-8 text-primary" />
-            <h2 className="text-4xl md:text-5xl font-bold font-serif">
-              Mathematics: Shaping Tomorrow
+      <div className="max-w-5xl mx-auto px-6 lg:px-8">
+        <div className={`space-y-16 ${isVisible ? 'animate-fade-up' : 'opacity-0'}`}>
+          <div className="text-center">
+            <h2 className="text-4xl md:text-6xl font-bold font-serif mb-6 leading-tight">
+              Mathematics isn't just abstract theory
             </h2>
-          </div>
-          <p className={`text-xl text-muted-foreground max-w-3xl mx-auto ${isVisible ? 'animate-fade-up [animation-delay:200ms] opacity-0 [animation-fill-mode:forwards]' : 'opacity-0'}`}>
-            From guiding us across the globe to protecting our digital lives, mathematics is the invisible force behind modern innovation.
-          </p>
-        </div>
-
-        <div className="grid sm:grid-cols-2 gap-6 mb-16">
-          {innovations.map((item, index) => {
-            const Icon = item.icon;
-            return (
-              <Card
-                key={index}
-                className={`p-6 hover-elevate ${isVisible ? `animate-fade-up opacity-0 [animation-fill-mode:forwards]` : 'opacity-0'}`}
-                style={{ animationDelay: `${400 + index * 100}ms` }}
-              >
-                <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
-                    <Icon className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold mb-1">{item.title}</h3>
-                    <p className="text-sm text-muted-foreground">{item.description}</p>
-                  </div>
-                </div>
-              </Card>
-            );
-          })}
-        </div>
-
-        <Card className={`p-8 bg-card ${isVisible ? 'animate-scale-in [animation-delay:800ms] opacity-0 [animation-fill-mode:forwards]' : 'opacity-0'}`}>
-          <h3 className="text-2xl font-semibold mb-4">Final Reflection</h3>
-          <p className="text-muted-foreground leading-relaxed mb-6">
-            Mathematics isn't just about numbers and equations—it's a powerful tool for understanding and transforming our world. Every time you use your phone's GPS, receive a medical diagnosis, check the weather forecast, or send a secure message, you're benefiting from mathematical innovations.
-          </p>
-          <p className="text-muted-foreground leading-relaxed mb-6">
-            The real-world applications we've explored represent just a fraction of mathematics' impact. As we face new challenges—from climate change to artificial intelligence—mathematical thinking will continue to be essential for creating solutions and driving innovation.
-          </p>
-          <div className="p-4 bg-primary/5 rounded-lg border border-primary/20">
-            <p className="font-medium text-primary">
-              What new problem could mathematics help solve in your lifetime?
+            <p className="text-2xl md:text-3xl font-body text-muted-foreground italic">
+              It's the invisible architecture of our modern world
             </p>
           </div>
-        </Card>
+
+          <div className={`grid md:grid-cols-2 gap-8 ${isVisible ? 'animate-fade-up [animation-delay:200ms] opacity-0 [animation-fill-mode:forwards]' : 'opacity-0'}`}>
+            <div className="bg-primary/10 border-l-4 border-primary p-8 rounded-r-lg">
+              <h3 className="text-xl font-serif font-bold mb-4">From Theory to Reality</h3>
+              <p className="font-body text-lg leading-relaxed">
+                Fourier's harmonic analysis, developed to study heat flow, now powers every medical scan. Einstein's "useless" relativity theory guides billions to their destinations daily.
+              </p>
+            </div>
+
+            <div className="bg-accent/10 border-l-4 border-accent p-8 rounded-r-lg">
+              <h3 className="text-xl font-serif font-bold mb-4">Hidden in Plain Sight</h3>
+              <p className="font-body text-lg leading-relaxed">
+                Every secure website, weather forecast, medical diagnosis, and GPS direction relies on mathematical innovations—often centuries old—working silently behind the scenes.
+              </p>
+            </div>
+          </div>
+
+          <div className={`relative bg-card p-12 rounded-2xl border-2 border-card-border ${isVisible ? 'animate-scale-in [animation-delay:400ms] opacity-0 [animation-fill-mode:forwards]' : 'opacity-0'}`}>
+            <Quote className="absolute top-6 left-6 w-12 h-12 text-primary/20" />
+            <blockquote className="relative z-10 mt-8">
+              <p className="text-2xl md:text-3xl font-serif italic leading-relaxed mb-6">
+                "Mathematics is the language in which God has written the universe."
+              </p>
+              <footer className="text-lg font-sans text-muted-foreground">
+                — Galileo Galilei
+              </footer>
+            </blockquote>
+          </div>
+
+          <div className={`text-center space-y-6 ${isVisible ? 'animate-fade-up [animation-delay:600ms] opacity-0 [animation-fill-mode:forwards]' : 'opacity-0'}`}>
+            <p className="text-xl md:text-2xl font-body leading-relaxed max-w-3xl mx-auto">
+              The next time someone asks "when will I ever use this?"—remember: mathematicians have been solving tomorrow's problems for centuries. Their work saves lives, connects continents, and shapes the future in ways we're only beginning to understand.
+            </p>
+            
+            <div className="pt-8">
+              <p className="text-lg font-sans text-primary font-medium">
+                What mathematical breakthrough will change your world next?
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
