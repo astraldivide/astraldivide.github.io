@@ -36,7 +36,7 @@ export function ProgressIndicator({ sections, activeSection, onSectionClick }: P
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-8">
-            <span className="font-serif text-xl font-bold">Mathematical Stories</span>
+            <span className="font-serif text-xl font-bold">Mulberry STEM Academy</span>
             <div className="hidden md:flex items-center gap-4">
               {sections.map((section, index) => (
                 <button

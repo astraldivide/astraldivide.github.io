@@ -4,7 +4,7 @@ import heroImage from "@assets/stock_images/golden_ratio_fibonac_b945c3c4.jpg";
 
 const heroTexts = [
   { myth: '"You never use maths in real life!"', reality: "You use maths every single day." },
-  { myth: '"Maths is just numbers!"', reality: "Maths is the language of the universe." },
+  { myth: '"Maths is just a bunch of formulas people made up!"', reality: "Maths is the language of the universe." },
   { myth: '"When will I ever need this?"', reality: "It's already saved your life." },
 ];
 
@@ -69,7 +69,7 @@ export function Hero() {
               className="group flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
               aria-label="Scroll to content"
             >
-              <span className="text-sm uppercase tracking-wider font-sans">Explore</span>
+              <span className="text-sm uppercase tracking-wider font-sans">By Zainab, Nabeeha and Wasimah</span>
               <ArrowDown className="w-4 h-4 group-hover:translate-y-1 transition-transform" />
             </button>
           </div>
